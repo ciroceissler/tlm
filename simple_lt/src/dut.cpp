@@ -15,13 +15,19 @@ DUT::DUT(sc_core::sc_module_name name) :
 }
 
 void DUT::request_thread() {
-  tlm::tlm_generic_payload* trans = new tlm::tlm_generic_payload;
-  sc_time delay = sc_time(20, SC_NS);
 
-  for (int i = 100; i; --i) {
+  sc_time delay = sc_time(5, SC_NS);
+
+  tlm::tlm_generic_payload* trans = new tlm::tlm_generic_payload;
+
+  for (unsigned i = 10; i; --i) {
     std::string msg;
 
-    msg = "dut msg number: " + i;
+    wait(e_wait_data);
+
+    wait(delay);
+
+    msg = "dut msg number: " + std::to_string(static_cast<long long unsigned int>(i));
 
     std::cout << sc_time_stamp() << " : [dut] " << msg << std::endl;
 
@@ -29,7 +35,7 @@ void DUT::request_thread() {
 
     trans->set_command( cmd );
     trans->set_address( 0 );
-    trans->set_data_ptr( reinterpret_cast<unsigned char*>(msg) );
+    trans->set_data_ptr( (unsigned char*) msg.c_str() );
     trans->set_data_length( 4 );
     trans->set_streaming_width( 4 );
     trans->set_byte_enable_ptr( 0 );
@@ -41,13 +47,13 @@ void DUT::request_thread() {
     if ( trans->is_response_error() ) {
       SC_REPORT_ERROR("TLM-2", "Response error from b_transport");
     }
-
-    wait(delay);
   }
 }
 
 //  TLM-2 blocking transport method
 void DUT::b_transport(tlm::tlm_generic_payload& trans, sc_time& delay) {
+
+  sc_time internal_delay = sc_time(10, SC_NS);
 
   tlm::tlm_command cmd = trans.get_command();
   sc_dt::uint64    adr = trans.get_address() / 4;
@@ -56,8 +62,12 @@ void DUT::b_transport(tlm::tlm_generic_payload& trans, sc_time& delay) {
   unsigned char*   byt = trans.get_byte_enable_ptr();
   unsigned int     wid = trans.get_streaming_width();
 
-  trans.set_response_status( tlm::TLM_OK_RESPONSE ); 
-
   std::cout << sc_time_stamp() << " : [dut] b_transport - rcv = " << ptr << std::endl;
+
+  e_wait_data.notify();
+
+  wait(internal_delay);
+
+  trans.set_response_status( tlm::TLM_OK_RESPONSE );
 }
 

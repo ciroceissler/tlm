@@ -4,6 +4,8 @@
 #ifndef SRC_DUT_H_
 #define SRC_DUT_H_
 
+#include <iostream>
+#include <string>
 #include <systemc.h>
 #include <tlm.h>
 #include "tlm_utils/simple_target_socket.h"
@@ -12,6 +14,8 @@
 class DUT : public sc_core::sc_module {
  private:
   virtual void b_transport(tlm::tlm_generic_payload& trans, sc_core::sc_time& delay);
+
+  sc_event e_wait_data;
 
  public:
   tlm_utils::simple_initiator_socket<DUT> initiator_socket;

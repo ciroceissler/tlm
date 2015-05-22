@@ -4,6 +4,8 @@
 #ifndef SRC_DRIVER_H_
 #define SRC_DRIVER_H_
 
+#include <iostream>
+#include <string>
 #include <systemc.h>
 #include <tlm.h>
 #include "tlm_utils/simple_initiator_socket.h"

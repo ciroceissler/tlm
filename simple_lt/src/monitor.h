@@ -4,6 +4,7 @@
 #ifndef SRC_MONITOR_H_
 #define SRC_MONITOR_H_
 
+#include <iostream>
 #include <systemc.h>
 #include <tlm.h>
 #include "tlm_utils/simple_target_socket.h"

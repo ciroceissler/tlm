@@ -188,11 +188,11 @@ AC_ARG_WITH([arch-suffix],
      *)          have_arch_suffix="yes"; LIB_ARCH_SUFFIX="$withval";;
   esac],
   [ac_dummy=""])
-
+ 
 AC_MSG_RESULT($have_arch_suffix (TARGET_ARCH=${TARGET_ARCH}))
 AC_SUBST(LIB_ARCH_SUFFIX)
 
-CPPFLAGS=${CPPFLAGS}" -fPIC "
+CPPFLAGS=${CPPFLAGS}" -fPIC -std=c++0x "
 
 # Check if SystemC path has been overloaded
 AC_ARG_WITH(systemc, 
@@ -250,7 +250,6 @@ AC_SUBST(LDFLAGS)
 AC_SUBST(LIBS)
 
 AC_CONFIG_FILES([Makefile
-                 src/common/Makefile
                  src/Makefile])
 AC_OUTPUT
 

@@ -11,13 +11,15 @@ Driver::Driver(sc_core::sc_module_name name) :
 }
 
 void Driver::request_thread() {
-  sc_time delay = sc_time(10, SC_NS);
+
+  sc_time delay = SC_ZERO_TIME;
+
   tlm::tlm_generic_payload* trans = new tlm::tlm_generic_payload;
 
-  for (int i = 100; i; --i) {
+  for (unsigned int i = 10; i; --i) {
     std::string msg;
 
-    msg = "driver msg number: " + i;
+    msg = "driver msg number: " + std::to_string(static_cast<long long unsigned int>(i));
 
     std::cout << sc_time_stamp() << " : [driver] " << msg << std::endl;
 
@@ -25,7 +27,7 @@ void Driver::request_thread() {
 
     trans->set_command( cmd );
     trans->set_address( 0 );
-    trans->set_data_ptr( reinterpret_cast<unsigned char*>(msg) );
+    trans->set_data_ptr( (unsigned char*) msg.c_str() );
     trans->set_data_length( 4 );
     trans->set_streaming_width( 4 );
     trans->set_byte_enable_ptr( 0 );
@@ -37,8 +39,6 @@ void Driver::request_thread() {
     if ( trans->is_response_error() ) {
       SC_REPORT_ERROR("TLM-2", "Response error from b_transport");
     }
-
-    wait(delay);
   }
 }
 
