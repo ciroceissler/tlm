@@ -1,14 +1,14 @@
 ## ****************************************************************************
-## 
-##  Copyright (c) 2015 by CPqD. All rights reserved.
-## 
+##
+##  Copyright (c) 2015 by Ceissler. All rights reserved.
+##
 ## ****************************************************************************
-## 
+##
 ##  configure.ac --
 ##                                                -*- Autoconf -*-
 ##  Process this file with autoconf to produce a configure script.
 ##
-##  Original Author: Ciro Ceissler, CPqD, 23-02-2015
+##  Original Author: Ciro Ceissler, Ceissler, 22-05-2015
 ##
 ## ****************************************************************************
 ##
@@ -21,11 +21,11 @@
 ## ****************************************************************************
 
 AC_PREREQ([2.63])
-AC_INIT([simple_lt], 
-        [1.0.0], 
-        [ciroc@cpqd.com.br],
+AC_INIT([simple_lt],
+        [1.0.0],
+        [ciro@ceissler.com.br],
         [simple_lt],
-        [http://www.cpqd.com.br/])
+        [http://www.ceissler.com.br/])
 AC_LANG([C++])
 AC_CONFIG_AUX_DIR([config])
 AC_CONFIG_MACRO_DIR([config])
@@ -188,32 +188,32 @@ AC_ARG_WITH([arch-suffix],
      *)          have_arch_suffix="yes"; LIB_ARCH_SUFFIX="$withval";;
   esac],
   [ac_dummy=""])
- 
+
 AC_MSG_RESULT($have_arch_suffix (TARGET_ARCH=${TARGET_ARCH}))
 AC_SUBST(LIB_ARCH_SUFFIX)
 
 CPPFLAGS=${CPPFLAGS}" -fPIC -std=c++0x "
 
 # Check if SystemC path has been overloaded
-AC_ARG_WITH(systemc, 
-  AS_HELP_STRING([--with-systemc=<path>], [systemc library to use (will be completed with /include and /lib), otherwise use $SYSTEMC_HOME]), 
-  [], 
+AC_ARG_WITH(systemc,
+  AS_HELP_STRING([--with-systemc=<path>], [systemc library to use (will be completed with /include and /lib), otherwise use $SYSTEMC_HOME]),
+  [],
   [with_systemc=$SYSTEMC_HOME])
 
 if test "x$with_systemc" = "x"; then
   AC_MSG_FAILURE(with-systemc not specified and \$SYSTEMC_HOME not defined)
 else
   AC_MSG_NOTICE([using SystemC at $with_systemc])
-  # TODO(ciroc): check systemc version, line below doesn't work
+  # TODO(ciroceissler): check systemc version, line below doesn't work
   # PKG_CHECK_MODULES(SYSTEMC, [systemc <= 2.3.1])
-  LDFLAGS=${LDFLAGS}" -L$with_systemc/lib${LIB_ARCH_SUFFIX}" 
+  LDFLAGS=${LDFLAGS}" -L$with_systemc/lib${LIB_ARCH_SUFFIX}"
   CPPFLAGS=${CPPFLAGS}" -I$with_systemc/include -DSC_INCLUDE_DYNAMIC_PROCESSES"
 fi
 
 # Check if TLM path has been overloaded, use SYSTEMC_HOME because since SystemC version 2.3 is included
-AC_ARG_WITH(tlm, 
-  AS_HELP_STRING([--with-tlm=<path>], [tlm path to use (will be completed with /include), otherwise use $SYSTEMC_HOME]), 
-  [], 
+AC_ARG_WITH(tlm,
+  AS_HELP_STRING([--with-tlm=<path>], [tlm path to use (will be completed with /include), otherwise use $SYSTEMC_HOME]),
+  [],
   [with_tlm=$SYSTEMC_HOME])
 
 if test "x$with_tlm" = "x"; then
@@ -235,7 +235,7 @@ AC_CHECK_HEADER(tlm.h,, AC_MSG_ERROR([tlm.h not found. Please install the TLM (v
 
 AC_MSG_NOTICE([checking systemc library function])
 
-LIBS=${LIBS}" -lsystemc" 
+LIBS=${LIBS}" -lsystemc"
 
 AC_RUN_IFELSE(
   [AC_LANG_SOURCE(
