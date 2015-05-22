@@ -1,16 +1,13 @@
-//  Project:   OTN 100G
 //  Author:    Ciro Ceissler
-//  Email:     ciroc at cpqd.com.br
-//  Copyright: 2015 @ CPqD
+//  Email:     ciro at ceissler.com.br
 
-#ifndef DUT_H_
-#define DUT_H_
+#ifndef SRC_DUT_H_
+#define SRC_DUT_H_
 
 #include <systemc.h>
 #include <tlm.h>
 #include "tlm_utils/simple_target_socket.h"
 #include "tlm_utils/simple_initiator_socket.h"
-#include <package.h>
 
 class DUT : public sc_core::sc_module {
  private:
@@ -22,12 +19,10 @@ class DUT : public sc_core::sc_module {
 
   SC_HAS_PROCESS(DUT);
 
-  //  Constructor
   explicit DUT(sc_core::sc_module_name name);
 
-  //  Communication Protocol
-  void RequestThread();
+  void request_thread();
 };
 
 
-#endif  //  DUT_H_
+#endif  //  SRC_DUT_H_

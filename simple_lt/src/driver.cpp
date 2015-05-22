@@ -14,10 +14,10 @@ void Driver::request_thread() {
   sc_time delay = sc_time(10, SC_NS);
   tlm::tlm_generic_payload* trans = new tlm::tlm_generic_payload;
 
-  for (int i = 0; i < 100; i++) {
+  for (int i = 100; i; --i) {
     std::string msg;
 
-    msg = "msg number: " + i;
+    msg = "driver msg number: " + i;
 
     std::cout << sc_time_stamp() << " : [driver] " << msg << std::endl;
 
