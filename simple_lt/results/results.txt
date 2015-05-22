@@ -1,0 +1,43 @@
+
+ == Simple example using Loosely-Timed ==
+
+0 s : [driver] driver msg number: 10
+0 s : [dut] b_transport - rcv = driver msg number: 10
+5 ns : [dut] dut msg number: 10
+5 ns : [monitor] b_transport - rcv = dut msg number: 10
+10 ns : [driver] driver msg number: 9
+10 ns : [dut] b_transport - rcv = driver msg number: 9
+15 ns : [dut] dut msg number: 9
+15 ns : [monitor] b_transport - rcv = dut msg number: 9
+20 ns : [driver] driver msg number: 8
+20 ns : [dut] b_transport - rcv = driver msg number: 8
+25 ns : [dut] dut msg number: 8
+25 ns : [monitor] b_transport - rcv = dut msg number: 8
+30 ns : [driver] driver msg number: 7
+30 ns : [dut] b_transport - rcv = driver msg number: 7
+35 ns : [dut] dut msg number: 7
+35 ns : [monitor] b_transport - rcv = dut msg number: 7
+40 ns : [driver] driver msg number: 6
+40 ns : [dut] b_transport - rcv = driver msg number: 6
+45 ns : [dut] dut msg number: 6
+45 ns : [monitor] b_transport - rcv = dut msg number: 6
+50 ns : [driver] driver msg number: 5
+50 ns : [dut] b_transport - rcv = driver msg number: 5
+55 ns : [dut] dut msg number: 5
+55 ns : [monitor] b_transport - rcv = dut msg number: 5
+60 ns : [driver] driver msg number: 4
+60 ns : [dut] b_transport - rcv = driver msg number: 4
+65 ns : [dut] dut msg number: 4
+65 ns : [monitor] b_transport - rcv = dut msg number: 4
+70 ns : [driver] driver msg number: 3
+70 ns : [dut] b_transport - rcv = driver msg number: 3
+75 ns : [dut] dut msg number: 3
+75 ns : [monitor] b_transport - rcv = dut msg number: 3
+80 ns : [driver] driver msg number: 2
+80 ns : [dut] b_transport - rcv = driver msg number: 2
+85 ns : [dut] dut msg number: 2
+85 ns : [monitor] b_transport - rcv = dut msg number: 2
+90 ns : [driver] driver msg number: 1
+90 ns : [dut] b_transport - rcv = driver msg number: 1
+95 ns : [dut] dut msg number: 1
+95 ns : [monitor] b_transport - rcv = dut msg number: 1
