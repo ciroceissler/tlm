@@ -1,0 +1,29 @@
+## ****************************************************************************
+## 
+##  Copyright (c) 2015 by CPqD. All rights reserved.
+## 
+##  TODO(ciroc): add copyright information
+## 
+## ****************************************************************************
+## 
+##  Make-rules.common--
+##  top-level include directory is added in Make-rules.{tests}
+##
+##  Original Author: Ciro Ceissler, CPqD, 23-02-2015
+##
+## ****************************************************************************
+##
+##  MODIFICATION LOG - modifiers, enter your name, affiliation, date and
+##  changes you are making here.
+##
+##      Name, Affiliation, Date:
+##  Description of Modification:
+##
+## ****************************************************************************
+
+# initialize some useful variables (filled later)
+
+CLEANFILES =
+EXTRA_DIST =
+
+# Taf!
