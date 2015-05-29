@@ -1,0 +1,15 @@
+# see http://about.travis-ci.org/docs/user/languages/cpp/ for more hint
+language: cpp
+
+compiler:
+  - gcc
+
+script: make
+
+# configure notifications (email, IRC, campfire etc)
+notifications:
+  email:
+    recipients:
+      - ciro.ceissler@gmail.com
+    on_success: change
+    on_failure: always
